@@ -2,10 +2,11 @@ import { PersonIsExist } from "../../middleware/errorHandler.middleware.js"
 import { registerUserServices } from "../../services/register.services.js"
 export const registerController = async (req, res) => {
     try {
+        res.set("Content-Type", "application/json")
         const {user, email, password} = req.body
         const token = await registerUserServices({user, email, password})
         res.cookie('token', token)
-        return res.status(200).json('usuario logueado')
+        return res.status(200).json('usuario registrado')
     } catch (error) {
         if(error instanceof PersonIsExist){
             res.status(400).json({message: error.message})

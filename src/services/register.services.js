@@ -5,7 +5,6 @@ import { validatePersonIsExist } from "../middleware/validateErrorHanlder.middle
 
 export async function registerUserServices({user, email, password}) {
     const existingUser = await userModel.findOne({ email: email});
-    console.log(existingUser)
     validatePersonIsExist(existingUser)
     
     // Crear nuevo usuario

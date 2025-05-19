@@ -1,6 +1,6 @@
 export function createPayload(payload) {
     const data = {
-        nombre: payload.user,
+        nombre: payload.name,
         email: payload.email
     }
     return data
