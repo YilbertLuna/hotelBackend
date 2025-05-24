@@ -10,9 +10,9 @@ export const loginController = async (req, res) => {
             res.cookie('token', token)
             return res.status(200).json(token)
         }
-        const token = await loginUserService({email, password})
+        const {token, findUser} = await loginUserService({email, password})
         res.cookie('token', token)
-        return res.status(200).json(token)
+        return res.status(200).json(findUser)
     } catch (error) {
         if (error instanceof IncorretUserPasswordError) {
             res.status(400).json({message: error.message})

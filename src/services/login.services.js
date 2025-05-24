@@ -12,7 +12,7 @@ export async function loginUserService({ email, password }) {
     
     const payload = createPayload(findUser)
     const token = new AccessToken().created(payload)
-    return token
+    return {token, findUser}
 }
 
 export async function loginAdminService({email, password}) {
